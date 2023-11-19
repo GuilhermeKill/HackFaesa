@@ -6,14 +6,37 @@
       <title>Tabela</title>
       <link rel="stylesheet" href="menu.css">
       <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha384-GLhlTQ8iFZPhUJGK3uZlSH50K91bSmOWF/9840+QF8P1aS/2r/Jw/Dd+2Iv4ZiG" crossorigin="anonymous">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" crossorigin="anonymous">
       <link rel="stylesheet" href="https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap4.min.css" crossorigin="anonymous" />
       <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.css">
 
       <style>
+         .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border-width: 0;
+         }
+
          body {
             font-family: Arial, sans-serif;
             margin: 20px;
+ 
+        }
+
+        .board{
+         position: absolute;
+         top: 33rem;
+         right: 19rem;
+         width: 12rem;
+
+
+         padding: 1rem;
         }
 
         .container {   
@@ -25,7 +48,7 @@
             border-radius: 8px;
             padding: 20px;
             text-align: center;
-            margin-top: 3cm;
+            margin-top: 5cm;
         }
 
         h1 {
@@ -57,7 +80,9 @@
 
         table, th, td {
             border: 1px solid black;
+            
         }
+
 
         th, td {
             padding: 15px;
@@ -71,6 +96,22 @@
         td{
          background-color: #f2f2f2;
         }
+
+        @keyframes slideAndFade {
+            0% {
+                margin-left: 0;
+                opacity: 1;
+            }
+            100% {
+                margin-left: -100%; /* Move to the left */
+                opacity: 0; /* Fade out */
+            }
+        }
+
+        .hover.slide-out {
+            animation: slideAndFade 3s ease; /* Apply the animation to the body with the added class */
+         }
+   
       </style>
    </head>
    <body>
@@ -94,7 +135,9 @@
       </div>
 
       <!-- Tabela -->
-      <div class="datatable" style="display: flex; justify-content: center;">
+      <div class="datatable"  style="display: flex; justify-content: center;">
+         <button class="board" onclick="RedirecionarDashboard();"> Ir para DashBoard </button>
+         
          <table id="gridAtestado" class="table table-bordered table-hover" width="100%" cellspacing="0">
              <thead>
                  <tr>
@@ -171,7 +214,11 @@
    function RedirecionarMenu(){
       window.location.href = './principal.html'
    }
+   function RedirecionarDashboard(){
+      window.location.href = './deashBoard1.html'
+   }
    $(document).ready(function () {
           RenderTable();
         });
+
 </script>
