@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+   <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Tabela</title>
+      <link rel="stylesheet" href="menu.css">
+      <style>
+         body {
+            font-family: Arial, sans-serif;            
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;            
+        }
+
+        #container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-top: 1cm;
+            width: 10cm;
+            margin-bottom: 1cm;
+        }
+
+        .question {
+            margin-bottom: 30px;
+        }
+
+        .answer-box {
+            display: flex;
+            align-items: center;
+        }
+
+        .answer-box input {
+            margin-right: 54px;
+        }
+
+        #observations {
+            margin-bottom: 15px;
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+        }
+
+        #submit-container {
+            text-align: right;
+        }
+
+        #submit-btn {
+            background-color: #4caf50;
+            color: #fff;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        #submit-btn:hover {
+            background-color: #45a049;
+        }
+      </style>
+   </head>
+   <body>
+      <div class="hamburger-menu">
+      <input id="menu__toggle" type="checkbox" />
+      <label class="menu__btn" for="menu__toggle">
+      <span></span>
+      </label>
+      <ul class="menu__box">
+        <li><a class="menu__item"  onclick="RedirecionarMenu();">Menu</a></li>
+        <li><a class="menu__item"  onclick="RedirecionarDoenca();">Cadastrar Atestado</a></li>
+        <li><a class="menu__item" onclick="RedirecionarPerguntarPeriodicas();">Periódico</a></li>
+        <li><a class="menu__item"  onclick="RedirecionarTabelasPeriodicas();">Dados Periódicos</a></li>
+      </ul>
+      <header style="text-align: center;">
+         <strong>HEALTH+</strong>
+         <nav>
+            <strong>Team CtrlZé</strong>
+         </nav>
+         
+      </header>
+    <form id="formRegister">
+      <div id="container">
+        
+        <div class="question">
+            <p><strong>Pergunta 1:</strong> Você se sente estressado/Esgotado?</p>
+           
+            <div class="answer-box">
+                <label for="q1-sim">Sim</label>
+                <input type="radio" id="q1-sim" name="q1" value="sim">
+                <label for="q1-nao">Não</label>
+                <input type="radio" id="q1-nao" name="q1" value="nao">
+            </div>
+        </div>
+    
+        <div class="question">
+            <p><strong>Pergunta 2:</strong> Você sente dores regulares (pulsos, ombros, coluna)?</p>
+            <div class="answer-box">
+                <label for="q2-sim">Sim</label>
+                <input type="radio" id="q2-sim" name="q2" value="sim">
+                <label for="q2-nao">Não</label>
+                <input type="radio" id="q2-nao" name="q2" value="nao">
+            </div>
+        </div>
+    
+        <div class="question">
+            <p><strong>Pergunta 3:</strong> Você sente fadiga ocular ou visão desfocada?</p>
+            <div class="answer-box">
+                <label for="q3-sim">Sim</label>
+                <input type="radio" id="q3-sim" name="q3" value="sim">
+                <label for="q3-nao">Não</label>
+                <input type="radio" id="q3-nao" name="q3" value="nao">
+            </div>
+        </div>
+    
+        <div class="question">
+            <p><strong>Pergunta 4:</strong> Você pratica atividades físicas para contrabalançar períodos prolongados de trabalho?</p>
+            <div class="answer-box">
+                <label for="q4-sim">Sim</label>
+                <input type="radio" id="q4-sim" name="q4" value="sim">
+                <label for="q4-nao">Não</label>
+                <input type="radio" id="q4-nao" name="q4" value="nao">
+            </div>
+        </div>
+    
+        <div class="question">
+            <p><strong>Pergunta 5:</strong> Você tem uma boa relação com seus superiores e colegas de trabalho?</p>
+            <div class="answer-box">
+                <label for="q5-sim">Sim</label>
+                <input type="radio" id="q5-sim" name="q5" value="sim">
+                <label for="q5-nao">Não</label>
+                <input type="radio" id="q5-nao" name="q5" value="nao">
+            </div>
+        </div>
+        <p><strong>Observações:</strong></p>
+        <textarea id="observations" placeholder="Digite suas observações aqui..."></textarea>
+        <div id="submit-container">
+            <button type="submit" id="submit-btn">Enviar</button>
+        </div>
+
+    </div>
+</form>
+    
+    <script>
+        function enviarRespostas() {
+            // Lógica para processar e enviar respostas
+            alert('Respostas enviadas com sucesso!');
+        }
+    </script>
+    
+    </body>
+    </html>
+    <script src="../lib/jquery/dist/jquery.min.js"></script>
+    <script>
+       
+
+        function RedirecionarDoenca(){
+           window.location.href = './doenca.html'
+        }
+        function RedirecionarPerguntarPeriodicas(){
+           window.location.href = './perguntas.html'
+        }
+        function RedirecionarTabelasPeriodicas(){
+           window.location.href = './teste.html'
+        }
+        function RedirecionarTabelasDoenca(){
+           window.location.href = './perguntas.html'
+        }
+        function RedirecionarMenu(){
+      window.location.href = './principal.html'
+   }
+        function SaveForm() {
+    $(document).on("submit", "#formRegister", function (e) {
+        e.preventDefault();
+        var respostas = [];
+
+        $('.question').each(function () {
+            var pergunta = $(this).find('p').text();
+            var opcaoMarcada = $(this).find('input:checked').val();
+            respostas.push({
+                pergunta: pergunta,
+                resposta: opcaoMarcada
+            });
+        });
+
+        console.log(respostas);
+
+        const questAnsiedade = {
+            Pergunta1: respostas[0].resposta === 'sim' ? 1 : 0,
+            Pergunta2: respostas[1].resposta === 'sim' ? 1 : 0,
+            Pergunta3: respostas[2].resposta === 'sim' ? 1 : 0,
+            Pergunta4: respostas[3].resposta === 'sim' ? 1 : 0,
+            Pergunta5: respostas[4].resposta === 'sim' ? 1 : 0,
+            Observacao: $("#observations").val(),
+            usuario: "Ludovico Monjardim"
+        };
+
+        let data = JSON.stringify(questAnsiedade);
+
+        $.ajax({
+            type: "POST",
+            url: "http://localhost:7777/ansiedade",
+            data: data,
+            contentType: "application/json",
+            success: function (result) {
+                window.location.href = './teste.html'
+            },
+            error: function (error) {
+                console.log(error);
+                // handle error
+            }
+        });
+    });
+}
+SaveForm();
+     </script>

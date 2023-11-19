@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+   <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Tabela</title>
+      <link rel="stylesheet" href="menu.css">
+      <style>
+         body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        .container {
+            
+            margin: 50px auto;
+            width: 12cm;
+            height: 5cm;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+            margin-top: 3cm;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 16px;
+            text-align: center;
+            text-decoration: none;
+            background-color: #4CAF50;
+            color: white;
+            border-radius: 5px;
+            margin: 10px;
+            cursor: pointer;
+        }
+
+        .button-periodico {
+            background-color: #3498db;
+        }
+      </style>
+   </head>
+   <body>
+      <div class="hamburger-menu">
+      <input id="menu__toggle" type="checkbox" />
+      <label class="menu__btn" for="menu__toggle">
+      <span></span>
+      </label>
+      <ul class="menu__box">
+         <li><a class="menu__item"  onclick="RedirecionarMenu();">Menu</a></li>
+         <li><a class="menu__item"  onclick="RedirecionarDoenca();">Cadastrar Atestado</a></li>
+         <li><a class="menu__item" onclick="RedirecionarPerguntarPeriodicas();">Periódico</a></li>
+         <li><a class="menu__item"  onclick="RedirecionarTabelasPeriodicas();">Dados Periódicos</a></li>
+      </ul>
+      <header style="text-align: center;">
+         <strong>HEALTH+</strong>
+         <nav>
+            <strong>Team CtrlZé</strong>
+         </nav>
+         
+      </header>
+      
+      </div>
+      <div class="container">
+        <h1>Controle de Saúde</h1>
+        <button class="button" href="./doenca.html" onclick="RedirecionarDoenca();">Cadastrar Atestado</button>
+        <button class="button button-periodico" onclick="RedirecionarPerguntarPeriodicas();" href="./perguntas.html">Periódico</button>
+    </div>
+   </body>
+</html>
+<script>
+   function RedirecionarDoenca(){
+      window.location.href = './doenca.html'
+   }
+   function RedirecionarPerguntarPeriodicas(){
+      window.location.href = './perguntas.html'
+   }
+   function RedirecionarTabelasPeriodicas(){
+      window.location.href = './teste.html'
+   }
+   function RedirecionarTabelasDoenca(){
+      window.location.href = './perguntas.html'
+   }
+   function RedirecionarMenu(){
+      window.location.href = './principal.html'
+   }
+</script>

@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+   <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Tabela</title>
+      <link rel="stylesheet" href="menu.css">
+      <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha384-GLhlTQ8iFZPhUJGK3uZlSH50K91bSmOWF/9840+QF8P1aS/2r/Jw/Dd+2Iv4ZiG" crossorigin="anonymous">
+      <link rel="stylesheet" href="https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap4.min.css" crossorigin="anonymous" />
+      <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.css">
+
+      <style>
+         body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        .container {   
+            margin: 50px auto;
+            width: 12cm;
+            height: 5cm;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+            margin-top: 3cm;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 16px;
+            text-align: center;
+            text-decoration: none;
+            background-color: #4CAF50;
+            color: white;
+            border-radius: 5px;
+            margin: 10px;
+            cursor: pointer;
+        }
+
+        .button-periodico {
+            background-color: #3498db;
+        }
+
+        table {
+            width: 80%;
+            margin: 20px auto;
+            border-collapse: collapse;
+        }
+
+        table, th, td {
+            border: 1px solid black;
+        }
+
+        th, td {
+            padding: 15px;
+            text-align: center;
+        }
+
+        th {
+            background-color: rgb(103, 0, 199);
+            color:white;
+        }
+        td{
+         background-color: #f2f2f2;
+        }
+      </style>
+   </head>
+   <body>
+      <div class="hamburger-menu">
+         <input id="menu__toggle" type="checkbox" />
+         <label class="menu__btn" for="menu__toggle">
+            <span></span>
+         </label>
+         <ul class="menu__box">
+            <li><a class="menu__item"  onclick="RedirecionarMenu();">Menu</a></li>
+            <li><a class="menu__item"  onclick="RedirecionarDoenca();">Cadastrar Atestado</a></li>
+            <li><a class="menu__item" onclick="RedirecionarPerguntarPeriodicas();">Periódico</a></li>
+            <li><a class="menu__item"  onclick="RedirecionarTabelasPeriodicas();">Dados Periódicos</a></li>
+         </ul>
+         <header style="text-align: center;">
+            <strong>HEALTH+</strong>
+            <nav>
+               <strong>Team CtrlZé</strong>
+            </nav>
+         </header>
+      </div>
+
+      <!-- Tabela -->
+      <div class="datatable" style="display: flex; justify-content: center;">
+         <table id="gridAtestado" class="table table-bordered table-hover" width="100%" cellspacing="0">
+             <thead>
+                 <tr>
+                     <th>Usuário</th>
+                     <th>Pergunta 1</th>
+                     <th>Pergunta 2</th>
+                     <th>Pergunta 3</th>
+                     <th>Pergunta 4</th>
+                     <th>Pergunta 5</th>
+                     <th>Observação</th>
+                 </tr>
+             </thead>
+         </table>
+     </div>
+   </body>
+</html>
+
+<script src="../lib/jquery/dist/jquery.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js" crossorigin="anonymous"></script>
+<script src="https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap4.min.js" crossorigin="anonymous"></script>
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.js"></script>
+
+<script>
+   function RenderTable(){
+	$("#gridAtestado").DataTable({
+		responsive: true,
+		"destroy": true,
+		"scrollX": false,
+		"searching": false,
+		"processing": true,
+		"serverSide": true,
+		"ajax": {
+			"url": 'http://localhost:7777/ansiedade',
+			"type": "GET",
+			"datatype": "json"
+		},
+		"columnDefs": [
+			{
+				"targets": "_all",
+				"className": "text-center"
+			},
+            {
+                targets: [1, 2, 3, 4, 5], // Assuming Pergunta1 to Pergunta5 are boolean columns
+                render: function (data, type, row) {
+                    // Check if the value is 1 (true) or 0 (false) and render the appropriate icon
+                    return data === 1 ? '<i class="fas fa-check"></i>' : '<i class="fas fa-times"></i>';
+                },
+            },
+
+		],
+		"columns": [
+      { "data": "Usuario", "name": "Usuario", "autoWidth": true },
+			{ "data": "Pergunta1", "name": "Pergunta1", "autoWidth": true },
+			{ "data": "Pergunta2", "name": "Pergunta2", "autoWidth": true },
+			{ "data": "Pergunta3", "name": "Pergunta3", "autoWidth": true },
+			{ "data": "Pergunta4", "name": "Pergunta4", "autoWidth": true },
+			{ "data": "Pergunta5", "name": "Pergunta5", "autoWidth": true },
+			{ "data": "Observacao", "name": "Observacao", "autoWidth": true },
+		],
+	});
+   }
+   function RedirecionarDoenca(){
+      window.location.href = './doenca.html'
+   }
+   function RedirecionarPerguntarPeriodicas(){
+      window.location.href = './perguntas.html'
+   }
+   function RedirecionarTabelasPeriodicas(){
+      window.location.href = './teste.html'
+   }
+   function RedirecionarTabelasDoenca(){
+      window.location.href = './perguntas.html'
+   }
+   function RedirecionarMenu(){
+      window.location.href = './principal.html'
+   }
+   $(document).ready(function () {
+          RenderTable();
+        });
+</script>
